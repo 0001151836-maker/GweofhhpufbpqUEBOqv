@@ -457,6 +457,14 @@
                 <div class="photo"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600" alt="Foto 5"></div>
                 <div class="photo"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=600" alt="Foto 6"></div>
                 <div class="photo"><img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=600" alt="Foto 7"></div>
+                <!-- Fotos duplicadas para scroll infinito -->
+                <div class="photo"><img src="https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?w=600" alt="Foto 1"></div>
+                <div class="photo"><img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=600" alt="Foto 2"></div>
+                <div class="photo"><img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600" alt="Foto 3"></div>
+                <div class="photo"><img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600" alt="Foto 4"></div>
+                <div class="photo"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600" alt="Foto 5"></div>
+                <div class="photo"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=600" alt="Foto 6"></div>
+                <div class="photo"><img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=600" alt="Foto 7"></div>
             </div>
             <div class="scroll-indicator">← Deslize para ver mais →</div>
 
@@ -538,9 +546,38 @@
 
         const gallery = document.getElementById('photoGallery');
         const photoElements = gallery.querySelectorAll('.photo');
+        let isScrolling = false;
 
         gallery.addEventListener('scroll', function() {
-            // Removido o código de scroll infinito e active photo
+            if (isScrolling) return;
+            
+            const scrollLeft = gallery.scrollLeft;
+            const scrollWidth = gallery.scrollWidth;
+            const clientWidth = gallery.clientWidth;
+            
+            // Se chegou perto do final, volta pro início
+            if (scrollLeft + clientWidth >= scrollWidth - 10) {
+                isScrolling = true;
+                gallery.scrollLeft = scrollLeft - (scrollWidth / 2);
+                setTimeout(() => {
+                    isScrolling = false;
+                }, 50);
+            }
+            
+            // Se chegou perto do início, vai pro final
+            if (scrollLeft <= 10) {
+                isScrolling = true;
+                gallery.scrollLeft = (scrollWidth / 2) + scrollLeft;
+                setTimeout(() => {
+                    isScrolling = false;
+                }, 50);
+            }
+        });
+
+        window.addEventListener('load', () => {
+            const photoWidth = gallery.querySelector('.photo').offsetWidth;
+            const gap = 10;
+            gallery.scrollLeft = (photoWidth + gap) * 7;
         });
 
         function updateCountdown() {
