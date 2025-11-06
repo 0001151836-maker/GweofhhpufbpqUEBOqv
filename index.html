@@ -555,41 +555,24 @@
                 }
             });
         }
-        
-        gallery.querySelectorAll('.photo').forEach(addClickToPhoto);
 
-        // Auto scroll do carrossel
-        function startAutoScroll() {
-            autoScrollInterval = setInterval(() => {
-                if (!userInteracting) {
-                    gallery.classList.add('auto-scrolling');
-                    gallery.scrollLeft += 1.5;
-                }
-            }, 20);
-        }
 
-        // Parar auto scroll quando usuário interagir
-        gallery.addEventListener('touchstart', () => {
-            userInteracting = true;
-            gallery.classList.remove('auto-scrolling');
-        });
-        
         gallery.addEventListener('touchend', () => {
             setTimeout(() => {
                 userInteracting = false;
-                gallery.classList.add('auto-scrolling');
+                
             }, 3000);
         });
         
         gallery.addEventListener('mousedown', () => {
             userInteracting = true;
-            gallery.classList.remove('auto-scrolling');
+
         });
         
         gallery.addEventListener('mouseup', () => {
             setTimeout(() => {
                 userInteracting = false;
-                gallery.classList.add('auto-scrolling');
+               
             }, 3000);
         });
 
