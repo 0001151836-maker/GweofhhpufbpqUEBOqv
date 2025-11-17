@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emanuelly e Paulo - Nosso Amor</title>
+    <title>Descarte Correto de Pilhas - Preserve o Meio Ambiente</title>
     <style>
         * {
             margin: 0;
@@ -12,639 +12,568 @@
         }
 
         body {
-            font-family: 'Georgia', serif;
-            background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
-            color: #fff;
-            overflow-x: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
         }
 
-        .splash-screen {
-            position: fixed;
+        header {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1rem;
+            opacity: 0.95;
+        }
+
+        nav {
+            background: #34495e;
+            padding: 0.5rem;
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
+            flex-direction: column;
+            gap: 0;
         }
 
-        .splash-screen.hidden {
-            opacity: 0;
-            visibility: hidden;
+        nav li {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        .surprise-button {
-            padding: 18px 50px;
-            font-size: 18px;
-            font-family: 'Georgia', serif;
-            color: #ff4757;
-            background: transparent;
-            border: 2px solid #ff4757;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 20px rgba(255, 71, 87, 0.3);
-            animation: glow 2s ease-in-out infinite;
+        nav li:last-child {
+            border-bottom: none;
         }
 
-        .surprise-button:hover {
-            background: #ff4757;
-            color: #000;
-            transform: scale(1.05);
-            box-shadow: 0 0 40px rgba(255, 71, 87, 0.6);
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+            display: block;
+            padding: 0.8rem 1rem;
         }
 
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(255, 71, 87, 0.3); }
-            50% { box-shadow: 0 0 40px rgba(255, 71, 87, 0.6); }
-        }
-
-        .main-content {
-            opacity: 0;
-            transition: opacity 0.8s ease;
-        }
-
-        .main-content.visible {
-            opacity: 1;
+        nav a:hover, nav a:active {
+            background: rgba(46, 204, 113, 0.3);
         }
 
         .container {
             max-width: 100%;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 1rem;
         }
 
-        .floating-hearts {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            overflow: hidden;
+        section {
+            margin: 1.5rem 0;
+            padding: 1.5rem 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .heart {
-            position: absolute;
-            font-size: 16px;
-            opacity: 0;
-            animation: floatUp 8s infinite ease-in;
+        h2 {
+            color: #27ae60;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid #2ecc71;
+            padding-bottom: 0.5rem;
         }
 
-        .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
-        .heart:nth-child(2) { left: 25%; animation-delay: 2s; }
-        .heart:nth-child(3) { left: 40%; animation-delay: 4s; }
-        .heart:nth-child(4) { left: 55%; animation-delay: 1s; }
-        .heart:nth-child(5) { left: 70%; animation-delay: 3s; }
-        .heart:nth-child(6) { left: 85%; animation-delay: 5s; }
-
-        @keyframes floatUp {
-            0% { bottom: -50px; opacity: 0; transform: translateX(0) rotate(0deg); }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { bottom: 100%; opacity: 0; transform: translateX(50px) rotate(360deg); }
+        h3 {
+            color: #34495e;
+            font-size: 1.2rem;
+            margin: 1.2rem 0 0.8rem;
         }
 
-        .header {
-            text-align: center;
-            padding: 30px 0 20px;
-            position: relative;
-            z-index: 2;
+        p {
+            margin-bottom: 1rem;
         }
 
-        .logo {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #ff4757 0%, #d32f2f 100%);
-            border-radius: 50%;
-            margin: 0 auto 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            box-shadow: 0 4px 20px rgba(255, 71, 87, 0.5);
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 4px 20px rgba(255, 71, 87, 0.5); }
-            50% { transform: scale(1.05); box-shadow: 0 4px 30px rgba(255, 71, 87, 0.8); }
-        }
-
-        .title {
-            font-family: 'Brush Script MT', cursive;
-            font-size: 36px;
-            color: #ff4757;
-            margin-bottom: 5px;
-            font-weight: normal;
-            text-shadow: 0 2px 10px rgba(255, 71, 87, 0.3);
-        }
-
-        .subtitle {
-            font-size: 11px;
-            color: #888;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .photo-gallery {
-            display: flex;
-            gap: 10px;
-            padding: 30px 20px;
-            position: relative;
-            z-index: 2;
-            overflow-x: auto;
-            overflow-y: hidden;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            scroll-behavior: auto;
-        }
-
-        .photo-gallery::-webkit-scrollbar {
-            display: none;
-        }
-        
-        .photo-gallery.auto-scrolling {
-            scroll-behavior: smooth;
-        }
-
-        .photo {
-            min-width: 280px;
-            max-width: 280px;
-            height: 400px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-            border: 2px solid #333;
-            transition: all 0.3s ease;
-            position: relative;
-            cursor: pointer;
-            flex-shrink: 0;
-        }
-
-        .photo:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 32px rgba(255, 71, 87, 0.4);
-            border-color: #ff4757;
-        }
-
-        .photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-            pointer-events: none;
-        }
-
-        .photo:hover img {
-            transform: scale(1.05);
-        }
-
-        .heart-explosion {
-            position: absolute;
-            font-size: 30px;
-            pointer-events: none;
-            z-index: 100;
-            animation: heartFloat 1.5s ease-out forwards;
-        }
-
-        @keyframes heartFloat {
-            0% { opacity: 1; transform: translate(-50%, -50%) scale(0) rotate(0deg); }
-            50% { opacity: 1; }
-            100% { opacity: 0; transform: translate(-50%, -200%) scale(1.5) rotate(360deg); }
-        }
-
-        .scroll-indicator {
-            text-align: center;
-            padding: 15px 0 0 0;
-            font-size: 12px;
-            color: #888;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(10px); }
-        }
-
-        .description {
-            text-align: center;
-            padding: 30px 20px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .description p {
-            color: #aaa;
-            line-height: 1.8;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-
-        .heart-divider {
-            font-size: 20px;
-            color: #ff4757;
-            margin: 15px 0;
-            animation: heartBeat 1.5s ease-in-out infinite;
-        }
-
-        @keyframes heartBeat {
-            0%, 100% { transform: scale(1); }
-            25% { transform: scale(1.1); }
-            50% { transform: scale(1); }
-            75% { transform: scale(1.15); }
-        }
-
-        .countdown-section {
-            text-align: center;
-            padding: 40px 0;
-            position: relative;
-            z-index: 2;
-        }
-
-        .countdown-title {
-            font-family: 'Brush Script MT', cursive;
-            font-size: 32px;
-            color: #ff4757;
-            margin-bottom: 10px;
-            text-shadow: 0 2px 10px rgba(255, 71, 87, 0.3);
-        }
-
-        .countdown-subtitle {
-            font-size: 13px;
-            color: #888;
-            margin-bottom: 25px;
-        }
-
-        .countdown {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            max-width: 350px;
-            margin: 0 auto;
-        }
-
-        .time-box {
-            aspect-ratio: 1;
-            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-            border: 2px solid #ff4757;
-            border-radius: 12px;
+        .impactos {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 30px rgba(255, 71, 87, 0.3);
-            transition: all 0.3s ease;
-            position: relative;
+            gap: 1rem;
+            margin: 1.5rem 0;
         }
 
-        .time-number {
-            font-size: 24px;
-            font-weight: bold;
-            color: #ff4757;
+        .impacto-card {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 1.2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .time-label {
-            font-size: 10px;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 4px;
+        .impacto-card h3 {
+            color: white;
+            margin-top: 0;
+            font-size: 1.1rem;
         }
 
-        .timeline-section {
-            padding: 50px 0;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .timeline-title {
-            font-family: 'Brush Script MT', cursive;
-            font-size: 32px;
-            color: #ff4757;
-            margin-bottom: 25px;
-            text-shadow: 0 2px 10px rgba(255, 71, 87, 0.3);
-        }
-
-        .timeline-header {
+        .substancias {
             display: flex;
-            justify-content: space-around;
-            align-items: center;
-            padding: 15px 10px;
-            background: #1a1a1a;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            border: 1px solid #333;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1.5rem 0;
         }
 
-        .timeline-tab {
-            font-size: 11px;
-            color: #888;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            padding: 5px 10px;
+        .substancia-item {
+            background: #ecf0f1;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #e74c3c;
         }
 
-        .timeline-photos {
+        .substancia-item h3 {
+            font-size: 1.1rem;
+            margin-top: 0;
+        }
+
+        .descarte-pontos {
+            background: #e8f8f5;
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .descarte-pontos ul {
+            margin-left: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .descarte-pontos li {
+            margin: 0.8rem 0;
+            font-size: 0.95rem;
+        }
+
+        .pilhas-sustentaveis {
             display: flex;
-            gap: 12px;
-            overflow-x: auto;
-            padding: 10px 0;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1.5rem 0;
         }
 
-        .timeline-photos::-webkit-scrollbar {
-            display: none;
+        .pilha-card {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 1.2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .timeline-photo {
-            min-width: 110px;
-            height: 110px;
-            background: #2a2a2a;
-            border-radius: 10px;
-            overflow: hidden;
-            border: 2px solid #333;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            scroll-snap-align: start;
+        .pilha-card h3 {
+            color: white;
+            margin-top: 0;
+            font-size: 1.1rem;
         }
 
-        .timeline-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .pilha-card ul {
+            margin-left: 1.2rem;
+            margin-top: 0.5rem;
         }
 
-        .final-counter {
+        .pilha-card li {
+            margin: 0.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .dicas-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+
+        .dicas-box h3 {
+            margin-top: 0;
+        }
+
+        .dicas-box ul {
+            margin-left: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .dicas-box li {
+            margin: 0.7rem 0;
+            font-size: 0.95rem;
+        }
+
+        .alerta {
+            background: #f8d7da;
+            border-left: 5px solid #e74c3c;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+            color: #721c24;
+        }
+
+        .alerta h3 {
+            margin-top: 0;
+            color: #721c24;
+        }
+
+        .alerta ul {
+            margin-left: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .alerta li {
+            margin: 0.5rem 0;
+        }
+
+        .destaque {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+
+        .destaque h3 {
+            margin-top: 0;
+        }
+
+        ol {
+            margin-left: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        ol li {
+            margin: 0.8rem 0;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            background: #34495e;
+            color: white;
             text-align: center;
-            padding: 50px 0 40px;
-            position: relative;
-            z-index: 2;
+            padding: 1.5rem 1rem;
+            margin-top: 2rem;
         }
 
-        .final-title {
-            font-family: 'Brush Script MT', cursive;
-            font-size: 32px;
-            color: #ff4757;
-            margin-bottom: 20px;
-            text-shadow: 0 2px 10px rgba(255, 71, 87, 0.3);
+        footer p {
+            margin-bottom: 0.5rem;
         }
 
-        .days-number {
-            font-size: 64px;
-            font-weight: bold;
-            color: #fff;
-            margin-bottom: 10px;
-            text-shadow: 0 0 20px rgba(255, 71, 87, 0.5);
-        }
-
-        .days-label {
-            font-size: 13px;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
+        /* Tablet */
         @media (min-width: 768px) {
-            .photo-gallery {
-                padding: 50px 20px;
-                gap: 15px;
-                justify-content: flex-start;
+            header h1 {
+                font-size: 2rem;
             }
-            .photo {
-                min-width: 320px;
-                max-width: 320px;
-                height: 450px;
+
+            header p {
+                font-size: 1.1rem;
             }
-            .scroll-indicator {
-                display: block;
+
+            nav ul {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 1.5rem;
+            }
+
+            nav li {
+                border-bottom: none;
+            }
+
+            nav a {
+                padding: 0.5rem;
+            }
+
+            .container {
+                padding: 2rem;
+            }
+
+            section {
+                padding: 2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .impactos,
+            .substancias,
+            .pilhas-sustentaveis {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        /* Desktop */
+        @media (min-width: 1024px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            header p {
+                font-size: 1.2rem;
+            }
+
+            nav ul {
+                gap: 2rem;
+            }
+
+            .container {
+                max-width: 1200px;
+                padding: 2rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+            }
+
+            .impactos {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .substancias {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .pilhas-sustentaveis {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            p, li {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="splash-screen" id="splashScreen">
-        <button class="surprise-button" id="surpriseBtn">Surpresa</button>
+    <header>
+        <h1>♻️ Descarte Correto de Pilhas</h1>
+        <p>Proteja o meio ambiente e a saúde humana</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#impacto">Impactos Ambientais</a></li>
+            <li><a href="#substancias">Substâncias Tóxicas</a></li>
+            <li><a href="#descarte">Como Descartar</a></li>
+            <li><a href="#sustentaveis">Pilhas Sustentáveis</a></li>
+            <li><a href="#dicas">Dicas</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="impacto">
+            <h2>🌍 Impactos Ambientais das Pilhas</h2>
+            <p>As pilhas descartadas incorretamente representam um grave problema ambiental. Uma única pilha pode contaminar até <strong>20.000 litros de água</strong> ou <strong>400 litros de solo</strong> por até 500 anos!</p>
+
+            <div class="impactos">
+                <div class="impacto-card">
+                    <h3>💧 Contaminação da Água</h3>
+                    <p>Metais pesados infiltram no solo e chegam aos lençóis freáticos, contaminando rios, lagos e fontes de água potável.</p>
+                </div>
+                <div class="impacto-card">
+                    <h3>🌱 Degradação do Solo</h3>
+                    <p>Substâncias tóxicas tornam o solo infértil, prejudicando a agricultura e a vegetação natural por décadas.</p>
+                </div>
+                <div class="impacto-card">
+                    <h3>🐟 Danos à Vida Aquática</h3>
+                    <p>Peixes e organismos aquáticos absorvem metais pesados, causando morte e contaminação da cadeia alimentar.</p>
+                </div>
+                <div class="impacto-card">
+                    <h3>👨‍👩‍👧‍👦 Riscos à Saúde Humana</h3>
+                    <p>Contaminação de alimentos e água causa doenças neurológicas, renais, câncer e problemas no desenvolvimento infantil.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="substancias">
+            <h2>☠️ Substâncias Tóxicas nas Pilhas</h2>
+            
+            <div class="substancias">
+                <div class="substancia-item">
+                    <h3>Mercúrio (Hg)</h3>
+                    <p><strong>Efeitos:</strong> Danos cerebrais, problemas neurológicos, distúrbios motores e de visão.</p>
+                </div>
+                <div class="substancia-item">
+                    <h3>Cádmio (Cd)</h3>
+                    <p><strong>Efeitos:</strong> Câncer, danos aos rins, ossos frágeis, hipertensão.</p>
+                </div>
+                <div class="substancia-item">
+                    <h3>Chumbo (Pb)</h3>
+                    <p><strong>Efeitos:</strong> Anemia, hipertensão, danos ao sistema nervoso, problemas de desenvolvimento em crianças.</p>
+                </div>
+                <div class="substancia-item">
+                    <h3>Níquel (Ni)</h3>
+                    <p><strong>Efeitos:</strong> Alergias, problemas respiratórios, possível carcinogênico.</p>
+                </div>
+                <div class="substancia-item">
+                    <h3>Zinco (Zn)</h3>
+                    <p><strong>Efeitos:</strong> Em excesso causa náuseas, vômitos e problemas gastrointestinais.</p>
+                </div>
+                <div class="substancia-item">
+                    <h3>Lítio (Li)</h3>
+                    <p><strong>Efeitos:</strong> Problemas renais, tremores, náuseas e intoxicação.</p>
+                </div>
+            </div>
+
+            <div class="alerta">
+                <h3>⚠️ Atenção!</h3>
+                <p>Essas substâncias não se degradam na natureza e se acumulam nos organismos vivos (bioacumulação), tornando-se cada vez mais concentradas ao longo da cadeia alimentar.</p>
+            </div>
+        </section>
+
+        <section id="descarte">
+            <h2>♻️ Como Descartar Pilhas Corretamente</h2>
+            
+            <div class="descarte-pontos">
+                <h3>Locais de Coleta:</h3>
+                <ul>
+                    <li>🏪 <strong>Supermercados e farmácias:</strong> Muitas redes possuem pontos de coleta na entrada</li>
+                    <li>🏢 <strong>Lojas de eletrônicos:</strong> Estabelecimentos que vendem pilhas são obrigados a receber pilhas usadas</li>
+                    <li>🏛️ <strong>Postos de coleta municipais:</strong> Consulte a prefeitura da sua cidade</li>
+                    <li>🏫 <strong>Escolas e universidades:</strong> Muitas instituições mantêm programas de coleta</li>
+                    <li>🏭 <strong>Cooperativas de reciclagem:</strong> Especializadas em resíduos perigosos</li>
+                </ul>
+            </div>
+
+            <div class="destaque">
+                <h3>🔍 Encontre Pontos de Coleta</h3>
+                <p>Visite o site da <strong><a href="https://ecopilha.com.br" target="_blank" rel="noopener noreferrer" style="color: #27ae60; text-decoration: underline;">Ecopilha</a></strong> para localizar pontos de coleta de pilhas e baterias próximos a você. A Ecopilha é uma das principais empresas brasileiras especializadas em logística reversa e reciclagem de pilhas e baterias.</p>
+            </div>
+
+            <h3>Passo a Passo:</h3>
+            <ol>
+                <li><strong>Armazene com segurança:</strong> Guarde pilhas usadas em recipiente plástico seco</li>
+                <li><strong>Separe por tipo:</strong> Pilhas alcalinas, recarregáveis, baterias de celular etc.</li>
+                <li><strong>Proteja os terminais:</strong> Use fita adesiva nos polos para evitar curto-circuito</li>
+                <li><strong>Localize pontos de coleta:</strong> Busque no site da prefeitura ou em aplicativos de reciclagem</li>
+                <li><strong>Entregue regularmente:</strong> Não acumule grandes quantidades em casa</li>
+            </ol>
+
+            <div class="alerta">
+                <h3>❌ NUNCA:</h3>
+                <ul>
+                    <li>Jogue pilhas no lixo comum</li>
+                    <li>Queime pilhas e baterias</li>
+                    <li>Descarte em terrenos baldios ou rios</li>
+                    <li>Desmonte ou perfure pilhas</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="sustentaveis">
+            <h2>🔋 Pilhas e Baterias Sustentáveis</h2>
+            
+            <div class="pilhas-sustentaveis">
+                <div class="pilha-card">
+                    <h3>🔄 Pilhas Recarregáveis</h3>
+                    <p><strong>Vantagens:</strong></p>
+                    <ul>
+                        <li>Podem ser recarregadas até 1000 vezes</li>
+                        <li>Economia de até 95% a longo prazo</li>
+                        <li>Redução drástica de resíduos</li>
+                        <li>Tipos: NiMH, Li-ion</li>
+                    </ul>
+                </div>
+
+                <div class="pilha-card">
+                    <h3>🌿 Pilhas Alcalinas Livres de Mercúrio</h3>
+                    <p><strong>Características:</strong></p>
+                    <ul>
+                        <li>Não contêm mercúrio ou cádmio</li>
+                        <li>Menor impacto ambiental</li>
+                        <li>Maior durabilidade</li>
+                        <li>Ainda precisam de descarte adequado</li>
+                    </ul>
+                </div>
+
+                <div class="pilha-card">
+                    <h3>⚡ Baterias de Lítio Modernas</h3>
+                    <p><strong>Benefícios:</strong></p>
+                    <ul>
+                        <li>Maior densidade energética</li>
+                        <li>Vida útil prolongada</li>
+                        <li>Recicláveis em até 95%</li>
+                        <li>Menos metais pesados</li>
+                    </ul>
+                </div>
+
+                <div class="pilha-card">
+                    <h3>☀️ Dispositivos com Energia Solar</h3>
+                    <p><strong>Alternativa sustentável:</strong></p>
+                    <ul>
+                        <li>Elimina necessidade de pilhas</li>
+                        <li>Energia renovável</li>
+                        <li>Economia contínua</li>
+                        <li>Zero resíduos químicos</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="destaque">
+                <h3>💡 Escolha Inteligente</h3>
+                <p>Investir em pilhas recarregáveis pode parecer mais caro inicialmente, mas economiza dinheiro e protege o meio ambiente. Uma família média pode economizar mais de R$ 500 por ano!</p>
+            </div>
+        </section>
+
+        <section id="dicas">
+            <h2>💡 Dicas para Reduzir o Consumo</h2>
+            
+            <div class="dicas-box">
+                <h3>📱 Reduza, Reutilize, Recicle</h3>
+                <ul>
+                    <li>Prefira dispositivos recarregáveis via USB</li>
+                    <li>Use transformadores e cabos em vez de pilhas quando possível</li>
+                    <li>Desligue aparelhos que não está usando</li>
+                    <li>Retire pilhas de aparelhos que ficarão guardados por muito tempo</li>
+                    <li>Compre pilhas de maior capacidade para durarem mais</li>
+                    <li>Considere aparelhos com manivela ou energia solar</li>
+                    <li>Mantenha contatos das pilhas limpos para melhor eficiência</li>
+                    <li>Guarde pilhas em local fresco e seco</li>
+                </ul>
+            </div>
+
+            <div class="destaque">
+                <h3>🌎 Faça a Diferença!</h3>
+                <p>Cada pequena ação conta. Se cada brasileiro descartasse corretamente suas pilhas, evitaríamos a contaminação de bilhões de litros de água anualmente. Seja parte da solução!</p>
+            </div>
+        </section>
+
+        <section style="background: linear-gradient(135deg, #2ecc71, #27ae60); color: white;">
+            <h2 style="color: white; border-color: white;">🎯 Resumo das Ações</h2>
+            <ol style="font-size: 1rem;">
+                <li>✅ Nunca jogue pilhas no lixo comum</li>
+                <li>✅ Procure pontos de coleta certificados</li>
+                <li>✅ Prefira pilhas recarregáveis</li>
+                <li>✅ Compre produtos com certificação ambiental</li>
+                <li>✅ Eduque familiares e amigos sobre o descarte correto</li>
+                <li>✅ Reduza o consumo usando alternativas sustentáveis</li>
+            </ol>
+        </section>
     </div>
 
-    <div class="main-content" id="mainContent">
-        <div class="floating-hearts">
-            <div class="heart">❤️</div>
-            <div class="heart">💕</div>
-            <div class="heart">💖</div>
-            <div class="heart">💗</div>
-            <div class="heart">💓</div>
-            <div class="heart">💝</div>
-        </div>
-
-        <div class="container">
-            <div class="header">
-                <div class="logo">❤️</div>
-                <h1 class="title">Manu e Paulo</h1>
-                <p class="subtitle">Celebrando Nosso Amor</p>
-            </div>
-
-            <div class="photo-gallery" id="photoGallery">
-                <div class="photo"><img src="https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?w=600" alt="Foto 1"></div>
-                <div class="photo"><img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=600" alt="Foto 2"></div>
-                <div class="photo"><img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600" alt="Foto 3"></div>
-                <div class="photo"><img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600" alt="Foto 4"></div>
-                <div class="photo"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600" alt="Foto 5"></div>
-                <div class="photo"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=600" alt="Foto 6"></div>
-                <div class="photo"><img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=600" alt="Foto 7"></div>
-            </div>
-            <div class="scroll-indicator">← Deslize para ver mais →</div>
-
-            <div class="description">
-                <p>"Quando você percebe que quer passar o resto da vida com alguém, você quer que o resto da vida comece o mais rápido possível."</p>
-                <div class="heart-divider">💕</div>
-                <p>Nossa jornada começou e cada momento juntos é especial. Cada sorriso, cada abraço, cada olhar compartilhado nos traz mais perto um do outro.</p>
-                <div class="heart-divider">💖</div>
-                <p>Este é nosso espaço para celebrar o amor, a cumplicidade e todos os momentos mágicos que vivemos lado a lado.</p>
-            </div>
-
-            <div class="countdown-section">
-                <h2 class="countdown-title">Tempo Juntos</h2>
-                <p class="countdown-subtitle">Desde 07/02/2025 💕</p>
-                <div class="countdown">
-                    <div class="time-box"><div class="time-number" id="years">0</div><div class="time-label">Anos</div></div>
-                    <div class="time-box"><div class="time-number" id="months">0</div><div class="time-label">Meses</div></div>
-                    <div class="time-box"><div class="time-number" id="days">0</div><div class="time-label">Dias</div></div>
-                    <div class="time-box"><div class="time-number" id="hours">0</div><div class="time-label">Horas</div></div>
-                    <div class="time-box"><div class="time-number" id="minutes">0</div><div class="time-label">Min</div></div>
-                    <div class="time-box"><div class="time-number" id="seconds">0</div><div class="time-label">Seg</div></div>
-                </div>
-            </div>
-
-            <div class="timeline-section">
-                <h2 class="timeline-title">Nossos Momentos</h2>
-                <div class="timeline-header">
-                    <div class="timeline-tab">Manu & Paulo</div>
-                    <div class="timeline-tab">Nossas Fotos</div>
-                    <div class="timeline-tab">Memórias</div>
-                </div>
-                <div class="timeline-photos">
-                    <div class="timeline-photo"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=200" alt="Momento 1"></div>
-                    <div class="timeline-photo"><img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=200" alt="Momento 2"></div>
-                    <div class="timeline-photo"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=200" alt="Momento 3"></div>
-                    <div class="timeline-photo"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=200" alt="Momento 4"></div>
-                    <div class="timeline-photo"><img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=200" alt="Momento 5"></div>
-                </div>
-            </div>
-
-            <div class="final-counter">
-                <h2 class="final-title">Juntos Felizes</h2>
-                <div class="days-number" id="totalDays">0</div>
-                <div class="days-label">Dias de Amor</div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        document.getElementById('surpriseBtn').addEventListener('click', function() {
-            document.getElementById('splashScreen').classList.add('hidden');
-            setTimeout(() => document.getElementById('mainContent').classList.add('visible'), 300);
-        });
-
-        const photos = document.querySelectorAll('.photo');
-        const heartEmojis = ['❤️', '💕', '💖', '💗', '💓', '💝', '💘'];
-        
-        photos.forEach(photo => {
-            photo.addEventListener('click', function(e) {
-                const rect = this.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                for (let i = 0; i < 5; i++) {
-                    setTimeout(() => createHeart(this, x, y), i * 100);
-                }
-            });
-        });
-
-        function createHeart(parent, x, y) {
-            const heart = document.createElement('div');
-            heart.className = 'heart-explosion';
-            heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
-            heart.style.left = x + (Math.random() * 40 - 20) + 'px';
-            heart.style.top = y + (Math.random() * 40 - 20) + 'px';
-            parent.appendChild(heart);
-            setTimeout(() => heart.remove(), 1500);
-        }
-
-        const gallery = document.getElementById('photoGallery');
-        let isScrolling = false;
-        let autoScrollInterval;
-        let userInteracting = false;
-        
-        function addClickToPhoto(photo) {
-            photo.addEventListener('click', function(e) {
-                const rect = this.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                for (let i = 0; i < 5; i++) {
-                    setTimeout(() => createHeart(this, x, y), i * 100);
-                }
-            });
-        }
-
-
-        gallery.addEventListener('touchend', () => {
-            setTimeout(() => {
-                userInteracting = false;
-                
-            }, 3000);
-        });
-        
-        gallery.addEventListener('mousedown', () => {
-            userInteracting = true;
-
-        });
-        
-        gallery.addEventListener('mouseup', () => {
-            setTimeout(() => {
-                userInteracting = false;
-               
-            }, 3000);
-        });
-
-        gallery.addEventListener('scroll', function() {
-            if (isScrolling) return;
-            
-            const galleryRect = gallery.getBoundingClientRect();
-            const photos = Array.from(gallery.querySelectorAll('.photo'));
-            
-            photos.forEach(photo => {
-                const photoRect = photo.getBoundingClientRect();
-                
-                // Se a foto saiu completamente pela esquerda
-                if (photoRect.right < galleryRect.left - 50) {
-                    isScrolling = true;
-                    const scrollBefore = gallery.scrollLeft;
-                    gallery.appendChild(photo);
-                    gallery.scrollLeft = scrollBefore - photo.offsetWidth - 10;
-                    setTimeout(() => isScrolling = false, 50);
-                }
-                // Se a foto saiu completamente pela direita (scroll reverso)
-                else if (photoRect.left > galleryRect.right + 50) {
-                    isScrolling = true;
-                    const scrollBefore = gallery.scrollLeft;
-                    gallery.insertBefore(photo, gallery.firstChild);
-                    gallery.scrollLeft = scrollBefore + photo.offsetWidth + 10;
-                    setTimeout(() => isScrolling = false, 50);
-                }
-            });
-        });
-        
-        // Iniciar auto scroll após splash screen
-        setTimeout(() => {
-            startAutoScroll();
-        }, 1000);
-
-        function updateCountdown() {
-            const startDate = new Date('2025-02-06T00:00:00');
-            const now = new Date();
-            const diff = now - startDate;
-            
-            if (diff < 0) {
-                document.getElementById('years').textContent = '0';
-                document.getElementById('months').textContent = '0';
-                document.getElementById('days').textContent = '0';
-                document.getElementById('hours').textContent = '0';
-                document.getElementById('minutes').textContent = '0';
-                document.getElementById('seconds').textContent = '0';
-                document.getElementById('totalDays').textContent = '0';
-                return;
-            }
-            
-            const years = Math.floor(diff / (365.25 * 24 * 60 * 60 * 1000));
-            const months = Math.floor((diff % (365.25 * 24 * 60 * 60 * 1000)) / (30.44 * 24 * 60 * 60 * 1000));
-            const days = Math.floor((diff % (30.44 * 24 * 60 * 60 * 1000)) / (24 * 60 * 60 * 1000));
-            const hours = Math.floor((diff % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
-            const minutes = Math.floor((diff % (60 * 60 * 1000)) / (60 * 1000));
-            const seconds = Math.floor((diff % (60 * 1000)) / 1000);
-            const totalDays = Math.floor(diff / (24 * 60 * 60 * 1000));
-            
-            document.getElementById('years').textContent = years;
-            document.getElementById('months').textContent = months;
-            document.getElementById('days').textContent = days;
-            document.getElementById('hours').textContent = hours;
-            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-            document.getElementById('totalDays').textContent = totalDays;
-        }
-        
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-    </script>
+    <footer>
+        <p><strong>♻️ Descarte Correto de Pilhas</strong></p>
+        <p>Preserve o meio ambiente para as futuras gerações</p>
+        <p style="margin-top: 1rem; opacity: 0.8;">© 2025 - Educação Ambiental</p>
+    </footer>
 </body>
 </html>
-
